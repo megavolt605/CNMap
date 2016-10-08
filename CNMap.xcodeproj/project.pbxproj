@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		782BA2501DA9235A00926D87 /* CNMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 782BA24E1DA9235A00926D87 /* CNMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		782BA2571DA925FB00926D87 /* CNMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2561DA925FB00926D87 /* CNMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		782BA24B1DA9235A00926D87 /* CNMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CNMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782BA24E1DA9235A00926D87 /* CNMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNMap.h; sourceTree = "<group>"; };
 		782BA24F1DA9235A00926D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		782BA2561DA925FB00926D87 /* CNMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				782BA24E1DA9235A00926D87 /* CNMap.h */,
 				782BA24F1DA9235A00926D87 /* Info.plist */,
+				782BA2561DA925FB00926D87 /* CNMap.swift */,
 			);
 			path = CNMap;
 			sourceTree = "<group>";
@@ -96,6 +99,7 @@
 					782BA24A1DA9235A00926D87 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = Z5BDHTFRH5;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782BA2571DA925FB00926D87 /* CNMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 		782BA2541DA9235A00926D87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z5BDHTFRH5;
@@ -252,6 +258,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.complexnumbers.CNMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +266,7 @@
 		782BA2551DA9235A00926D87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z5BDHTFRH5;
