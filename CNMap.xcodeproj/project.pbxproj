@@ -8,14 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		782BA2501DA9235A00926D87 /* CNMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 782BA24E1DA9235A00926D87 /* CNMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		782BA2571DA925FB00926D87 /* CNMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2561DA925FB00926D87 /* CNMap.swift */; };
+		782BA2571DA925FB00926D87 /* CNMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2561DA925FB00926D87 /* CNMapView.swift */; };
+		782BA2771DA92AFC00926D87 /* CNMapQuadTreeCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2761DA92AFC00926D87 /* CNMapQuadTreeCoordinate.swift */; };
+		782BA2791DA92B5A00926D87 /* CNMapQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2781DA92B5A00926D87 /* CNMapQuadTreeNode.swift */; };
+		782BA27B1DA92C9100926D87 /* CNMapPinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA27A1DA92C9100926D87 /* CNMapPinModel.swift */; };
+		782BA27D1DA92CEF00926D87 /* CNMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA27C1DA92CEF00926D87 /* CNMapAnnotation.swift */; };
+		782BA27F1DA92D5400926D87 /* CNMapCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA27E1DA92D5400926D87 /* CNMapCallout.swift */; };
+		782BA2811DA92D9C00926D87 /* CNMapTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2801DA92D9C00926D87 /* CNMapTools.swift */; };
+		782BA2831DA92E6700926D87 /* CNMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2821DA92E6700926D87 /* CNMapViewController.swift */; };
+		782BA2851DA92F2200926D87 /* CNMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2841DA92F2200926D87 /* CNMapPin.swift */; };
+		782BA2871DA9339200926D87 /* CNMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2861DA9339200926D87 /* CNMap.swift */; };
+		782BA2891DA9342500926D87 /* CNMapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA2881DA9342500926D87 /* CNMapLocation.swift */; };
+		782BA28B1DA93DBF00926D87 /* CNMapCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782BA28A1DA93DBF00926D87 /* CNMapCalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		782BA24B1DA9235A00926D87 /* CNMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CNMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782BA24E1DA9235A00926D87 /* CNMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNMap.h; sourceTree = "<group>"; };
 		782BA24F1DA9235A00926D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		782BA2561DA925FB00926D87 /* CNMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMap.swift; sourceTree = "<group>"; };
+		782BA2561DA925FB00926D87 /* CNMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapView.swift; sourceTree = "<group>"; };
+		782BA2761DA92AFC00926D87 /* CNMapQuadTreeCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapQuadTreeCoordinate.swift; sourceTree = "<group>"; };
+		782BA2781DA92B5A00926D87 /* CNMapQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapQuadTreeNode.swift; sourceTree = "<group>"; };
+		782BA27A1DA92C9100926D87 /* CNMapPinModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapPinModel.swift; sourceTree = "<group>"; };
+		782BA27C1DA92CEF00926D87 /* CNMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapAnnotation.swift; sourceTree = "<group>"; };
+		782BA27E1DA92D5400926D87 /* CNMapCallout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapCallout.swift; sourceTree = "<group>"; };
+		782BA2801DA92D9C00926D87 /* CNMapTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapTools.swift; sourceTree = "<group>"; };
+		782BA2821DA92E6700926D87 /* CNMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapViewController.swift; sourceTree = "<group>"; };
+		782BA2841DA92F2200926D87 /* CNMapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapPin.swift; sourceTree = "<group>"; };
+		782BA2861DA9339200926D87 /* CNMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMap.swift; sourceTree = "<group>"; };
+		782BA2881DA9342500926D87 /* CNMapLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapLocation.swift; sourceTree = "<group>"; };
+		782BA28A1DA93DBF00926D87 /* CNMapCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNMapCalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +72,18 @@
 			children = (
 				782BA24E1DA9235A00926D87 /* CNMap.h */,
 				782BA24F1DA9235A00926D87 /* Info.plist */,
-				782BA2561DA925FB00926D87 /* CNMap.swift */,
+				782BA2861DA9339200926D87 /* CNMap.swift */,
+				782BA2881DA9342500926D87 /* CNMapLocation.swift */,
+				782BA2821DA92E6700926D87 /* CNMapViewController.swift */,
+				782BA2561DA925FB00926D87 /* CNMapView.swift */,
+				782BA2801DA92D9C00926D87 /* CNMapTools.swift */,
+				782BA27A1DA92C9100926D87 /* CNMapPinModel.swift */,
+				782BA2841DA92F2200926D87 /* CNMapPin.swift */,
+				782BA27C1DA92CEF00926D87 /* CNMapAnnotation.swift */,
+				782BA27E1DA92D5400926D87 /* CNMapCallout.swift */,
+				782BA28A1DA93DBF00926D87 /* CNMapCalloutView.swift */,
+				782BA2781DA92B5A00926D87 /* CNMapQuadTreeNode.swift */,
+				782BA2761DA92AFC00926D87 /* CNMapQuadTreeCoordinate.swift */,
 			);
 			path = CNMap;
 			sourceTree = "<group>";
@@ -136,7 +169,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				782BA2571DA925FB00926D87 /* CNMap.swift in Sources */,
+				782BA2811DA92D9C00926D87 /* CNMapTools.swift in Sources */,
+				782BA27F1DA92D5400926D87 /* CNMapCallout.swift in Sources */,
+				782BA2831DA92E6700926D87 /* CNMapViewController.swift in Sources */,
+				782BA2851DA92F2200926D87 /* CNMapPin.swift in Sources */,
+				782BA2891DA9342500926D87 /* CNMapLocation.swift in Sources */,
+				782BA2771DA92AFC00926D87 /* CNMapQuadTreeCoordinate.swift in Sources */,
+				782BA27B1DA92C9100926D87 /* CNMapPinModel.swift in Sources */,
+				782BA28B1DA93DBF00926D87 /* CNMapCalloutView.swift in Sources */,
+				782BA2571DA925FB00926D87 /* CNMapView.swift in Sources */,
+				782BA2791DA92B5A00926D87 /* CNMapQuadTreeNode.swift in Sources */,
+				782BA27D1DA92CEF00926D87 /* CNMapAnnotation.swift in Sources */,
+				782BA2871DA9339200926D87 /* CNMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

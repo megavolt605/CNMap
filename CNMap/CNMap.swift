@@ -8,6 +8,8 @@
 
 import Foundation
 
-class CNMap {
+public struct CNMap {
+    
+    static var clusterDivider: Double = 32.0
     
 }

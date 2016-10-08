@@ -1,0 +1,13 @@
+platform :ios, '8.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/megavolt605/CNMap.git'
+
+target 'CNMapExample' do
+  use_frameworks!
+
+pod 'CNMap', :path => '..'
+  pod 'GoogleMaps'
+  pod 'YandexMapKit'
+
+end
