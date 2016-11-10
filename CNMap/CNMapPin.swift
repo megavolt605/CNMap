@@ -6,43 +6,34 @@
 //  Copyright © 2016 Complex Numbers. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+public
 enum CNMapPinKind {
     case single, cluster
 }
 
-protocol CNMapPinDelegate {
+public protocol CNMapPinDelegate {
     func mapPinStateChanged(_ mapPin: CNMapPin)
 }
 
-class CNMapPin {
+open class CNMapPin {
 
-    /*
-    static func createPin(superView: UIView, annotation: CNMapAnnotation) -> CNMapPin {
-        #if TELE2
-            return CNMapPinImaged(superView: superView, annotation: annotation)
-        #else
-            return CNMapPinStandart(superView: superView, annotation: annotation)
-        #endif
-    }
-    */
-    
     weak var superView: UIView?
     
-    var delegate: CNMapPinDelegate?
+    open var delegate: CNMapPinDelegate?
     
-    var count: Int = 0 {
+    open var count: Int = 0 {
         didSet {
             countWasChanged()
         }
     }
     
-    var kind: CNMapPinKind {
+    open var kind: CNMapPinKind {
         return count > 1 ? .cluster : .single
     }
     
-    var selected: Bool = false {
+    open var selected: Bool = false {
         didSet {
             if selected != oldValue { pinDidSetSelected(selected) }
         }
@@ -140,9 +131,9 @@ class CNMapPin {
         }*/
     }
     
-    func drawRect(_ rect: CGRect) { }
+    open func drawRect(_ rect: CGRect) { }
     
-    init(superView: UIView, annotation: CNMapAnnotation) {
+    public required init(superView: UIView, annotation: CNMapAnnotation) {
         self.superView = superView
         setupSubviews()
         setupImages(annotation)

@@ -11,30 +11,27 @@ import CoreLocation
 
 open class CNMapAnnotation: NSObject {
     
-    final var info: [CNMapPinModel] = []
+    open var pins: [CNMapPinModel] = []
     
-    weak final var annotationView: UIView?
-    weak final var calloutView: UIView?
+    weak var annotationView: UIView?
+    weak var calloutView: UIView?
     
-    var internalCoordinate: CLLocationCoordinate2D
+    open var internalCoordinate: CLLocationCoordinate2D
     
     fileprivate var _count = 0
-    final var count: Int {
+    open var count: Int {
         if _count != 0 {
             return _count
         }
-        _count = info.reduce(0) { (sum, model) -> Int in
+        _count = pins.reduce(0) { (sum, model) -> Int in
             return sum + model.count
         }
         return _count
     }
     
-    final func enableUserInteractions() {
-        calloutView?.isUserInteractionEnabled = true
-    }
-    
-    final func disableUserInteractions() {
-        calloutView?.isUserInteractionEnabled = false
+    open var isUserInteractionEnabled: Bool {
+        get { return calloutView?.isUserInteractionEnabled ?? false }
+        set { calloutView?.isUserInteractionEnabled = newValue }
     }
     
     // Obj-C stuff for Equitable & Hashable
@@ -55,14 +52,14 @@ open class CNMapAnnotation: NSObject {
         return hashValue
     }
     
-    init(info: [CNMapPinModel], coordinate: CLLocationCoordinate2D) {
+    public init(pins: [CNMapPinModel], coordinate: CLLocationCoordinate2D) {
         internalCoordinate = coordinate
-        self.info = info
+        self.pins = pins
         super.init()
     }
     
 }
 
-func ==(lhs: CNMapAnnotation, rhs: CNMapAnnotation) -> Bool {
+public func ==(lhs: CNMapAnnotation, rhs: CNMapAnnotation) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

@@ -1,5 +1,5 @@
 //
-//  CNMapViewController.swift
+//  CNMapController.swift
 //  CNMap
 //
 //  Created by Igor Smirnov on 08/10/2016.
@@ -12,23 +12,25 @@ import CoreLocation
 typealias CNMapCallback = () -> Void
 
 public protocol CNMapDataSource: class {
-    func mapViewCoordinator(_ coordinator: CNMapViewCoordinator, needsPinsAtTopLeft topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D, completon: (_ list: [CNMapPinModel]) -> Void)
+    func mapViewCoordinator(_ coordinator: CNMapCoordinator, needsPinsAtTopLeft topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D, completon: (_ list: [CNMapPinModel]) -> Void)
 }
 
-public protocol CNMapDelegate: class {
-    func mapCoordinatorNeedsMapView(_ controller: CNMapViewCoordinator, rect: CGRect) -> CNMapView
-    func createInfoViewForAnnotation(_ annotation: CNMapAnnotation) -> CNMapCalloutView?
+public protocol CNMapCoordinatorDelegate: class {
+    func mapCoordinator(_ coordinator: CNMapCoordinator, needsMapViewInFrame frame: CGRect) -> CNMapView
 }
 
-open class CNMapViewCoordinator {
+open class CNMapCoordinator {
+    
+    static public let coordinator = CNMapCoordinator()
     
     open var superView: UIView!
+    open var mapPinClass: CNMapPin.Type!
+    
     fileprivate var _mapView: CNMapView!
-
-    var mapView: CNMapView {
+    open var mapView: CNMapView {
         if _mapView == nil {
-            _mapView = delegate?.mapCoordinatorNeedsMapView(self, rect: superView.bounds)
-            // _mapView.delegate = self
+            _mapView = delegate?.mapCoordinator(self, needsMapViewInFrame: superView.bounds)
+            _mapView.delegate = self
             
             _mapView.view.translatesAutoresizingMaskIntoConstraints = true
             superView.addSubview(_mapView.view)
@@ -39,55 +41,25 @@ open class CNMapViewCoordinator {
     
     let coordinateQuadTree = CNMapQuadTreeCoordinate()
     
-    weak var delegate: CNMapDelegate?
-    weak var dataSource: CNMapDataSource?
+    weak open var delegate: CNMapCoordinatorDelegate?
+    weak open var dataSource: CNMapDataSource?
     
-    var startLocation: CLLocation?
-    var backCoordinate: CLLocationCoordinate2D?
+    open var startLocation: CLLocation?
+    open var backCoordinate: CLLocationCoordinate2D?
     
     var lastViewLocationRect: CNMapCoordinateRect?
     var timer: Timer!
-    var skipTimer = false
-    var refreshOnAppear = false
     
-    // UIViewController methods
-    open func didLoad() {
-        reloadMap(sender: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadMap(sender:)), name: NSNotification.Name(rawValue: "CNMapReload"), object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    open func willAppear() {
-        
-        if let annotation = mapView.selectedAnnotation {
-            annotation.enableUserInteractions()
-        }
-        
-        if refreshOnAppear {
-            refreshOnAppear = false
-            startTimer()
-        }
-        
-    }
-    
-    open func willDisappear(_ animated: Bool) {
-        stopTimer()
-    }
-    
-    func clearPlaces() {
+    func clearPins() {
         if _mapView != nil {
             let annotations = NSMutableSet(array: mapView.annotations)
             mapView.removeAnnotations(annotations.allObjects as! [CNMapAnnotation])
             coordinateQuadTree.clearTree()
-            refreshOnAppear = true
         }
     }
     
-    @objc func reloadMap(sender: AnyObject) {
-        clearPlaces()
+    @objc open func reloadMap(sender: AnyObject) {
+        clearPins()
         if _mapView != nil {
             _mapView.selectedAnnotation = nil
             _mapView.view.removeFromSuperview()
@@ -143,21 +115,18 @@ open class CNMapViewCoordinator {
         }
     }
     
-    func stopTimer() {
+    open func stopTimer() {
         if timer != nil {
             timer.invalidate()
             timer = nil
         }
     }
     
-    func startTimer() {
-        if (!skipTimer) && (!_mapView.skipTimer) {
-            let mapViewRect = mapViewVisibleRect()
-            lastViewLocationRect = mapViewRect
-            rebuildAnnotationsWithItems(items: [])
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateContent(sender:)), userInfo: nil, repeats: false)
-        }
-        _mapView.skipTimer = false
+    open func startTimer() {
+        let mapViewRect = mapViewVisibleRect()
+        lastViewLocationRect = mapViewRect
+        rebuildAnnotationsWithItems(items: [])
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateContent(sender:)), userInfo: nil, repeats: false)
     }
     
     func rebuildAnnotationsWithItems(items: [CNMapPinModel]) {
@@ -199,33 +168,12 @@ open class CNMapViewCoordinator {
     }
     
 }
-/*
-extension CNMapViewCoordinator: CNMapViewDelegate {
+
+extension CNMapCoordinator: CNMapViewDelegate {
     
-    func mapView(_ mapView: CNMapView, regionDidChangeAnimated animated: Bool) {
+    public func mapView(_ mapView: CNMapView, regionDidChangeAnimated animated: Bool) {
         stopTimer()
         startTimer()
     }
-    
-    func mapView(_ mapView: CNMapView, setCenterCoordinate coordinate: CLLocationCoordinate2D) {
-        _mapView.skipTimer = true
-        skipTimer = true
-        mapView.setCenterCoordinate(coordinate, animated: true)
-        skipTimer = false
-    }
-    
-    func mapView(_ mapView: CNMapView, openInfoForAnnotation annotation: CNMapAnnotation) {
-        let storyboard = CNStoryboard.main
-        if annotation.actionCount == 1 {
-            let viewController = storyboard.actionInfoViewController
-            viewController.selectedAction = mapView.selectedAnnotation?.singleAction
-            CNUI.mainVC.pushViewController(viewController: viewController)
-        } else {
-            let viewController = storyboard.actionTilesViewController
-            viewController.mapAnnotation = mapView.selectedAnnotation
-            CNUI.mainVC.pushViewController(viewController: viewController)
-        }
-    }
-    
+
 }
-*/

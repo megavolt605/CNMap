@@ -10,8 +10,8 @@ import UIKit
 
 open class CNMapCalloutView: UIView {
     
-    weak public var annotation: CNMapAnnotation!
-    weak public var owner: CNMapView!
+    open weak var annotation: CNMapAnnotation!
+    open weak var owner: CNMapView!
     
     func openInfoTap(_ recognizer: UIGestureRecognizer) {
         startActivity()
@@ -19,12 +19,8 @@ open class CNMapCalloutView: UIView {
         self.stopActivity()
     }
     
-    func startActivity() { }
+    open func startActivity() { }
     
-    func stopActivity() { }
-    
-    func enableUserInteraction() { }
-    
-    func disableUserInteraction() { }
+    open func stopActivity() { }
     
 }

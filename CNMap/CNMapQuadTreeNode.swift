@@ -9,21 +9,21 @@
 import Foundation
 import CoreLocation
 
-typealias CNMapDataReturnBlock = (_ data: CNMapPinModel) -> Void
+public typealias CNMapDataReturnBlock = (_ data: CNMapPinModel) -> Void
 
-enum CNMapQuadTreeNodeKind {
+public enum CNMapQuadTreeNodeKind {
     case northWest, northEast, southWest, southEast
     static var allValues: [CNMapQuadTreeNodeKind] = [.northWest, .northEast, .southWest, .southEast]
 }
 
-final class CNMapQuadTreeNode {
+open class CNMapQuadTreeNode {
     
-    var nodes: [CNMapQuadTreeNodeKind: CNMapQuadTreeNode] = [:]
+    open var nodes: [CNMapQuadTreeNodeKind: CNMapQuadTreeNode] = [:]
     
-    var boundingBox: CNMapCoordinateRect
-    var bucketCapacity: Int
+    open var boundingBox: CNMapCoordinateRect
+    open var bucketCapacity: Int
     
-    var points: [CNMapPinModel] = []
+    open var points: [CNMapPinModel] = []
     
     func gatherDataInRange(_ range: CNMapCoordinateRect, block: CNMapDataReturnBlock) {
         if !boundingBox.intersectsBoundingBox(range) {

@@ -10,16 +10,20 @@ import Foundation
 import CoreLocation
 
 public struct CNMapPoint {
-    var x: Int64
-    var y: Int64
+    public var x: Int64
+    public var y: Int64
+    public init(x: Int64, y: Int64) {
+        self.x = x
+        self.y = y
+    }
 }
 
 public struct CNMapCoordinateRect {
     
-    var topLeft: CLLocationCoordinate2D
-    var bottomRight: CLLocationCoordinate2D
+    public var topLeft: CLLocationCoordinate2D
+    public var bottomRight: CLLocationCoordinate2D
     
-    func containsData(_ data: CNMapPinModel) -> Bool {
+    public func containsData(_ data: CNMapPinModel) -> Bool {
         if let coordinate = data.coordinate {
             let containsX = topLeft.latitude <= coordinate.latitude && coordinate.latitude <= bottomRight.latitude
             let containsY = topLeft.longitude <= coordinate.longitude && coordinate.longitude <= bottomRight.longitude
@@ -29,29 +33,29 @@ public struct CNMapCoordinateRect {
         return false
     }
     
-    func intersectsBoundingBox(_ b2: CNMapCoordinateRect) -> Bool {
+    public func intersectsBoundingBox(_ b2: CNMapCoordinateRect) -> Bool {
         return topLeft.latitude <= b2.bottomRight.latitude && bottomRight.latitude >= b2.topLeft.latitude &&
             topLeft.longitude <= b2.bottomRight.longitude && bottomRight.longitude >= b2.topLeft.longitude
     }
     
-    var center: CLLocationCoordinate2D {
+    public var center: CLLocationCoordinate2D {
         return CLLocationCoordinate2DMake(
             (bottomRight.latitude + topLeft.latitude) / 2.0,
             (bottomRight.longitude + topLeft.longitude) / 2.0
         )
     }
     
-    var minX: Double { return min(topLeft.latitude, bottomRight.latitude) }
-    var maxX: Double { return max(topLeft.latitude, bottomRight.latitude) }
-    var minY: Double { return min(topLeft.longitude, bottomRight.longitude) }
-    var maxY: Double { return max(topLeft.longitude, bottomRight.longitude) }
+    public var minX: Double { return min(topLeft.latitude, bottomRight.latitude) }
+    public var maxX: Double { return max(topLeft.latitude, bottomRight.latitude) }
+    public var minY: Double { return min(topLeft.longitude, bottomRight.longitude) }
+    public var maxY: Double { return max(topLeft.longitude, bottomRight.longitude) }
     
-    init(x0: Double, y0: Double, xf: Double, yf: Double) {
+    public init(x0: Double, y0: Double, xf: Double, yf: Double) {
         self.topLeft = CLLocationCoordinate2DMake(x0, y0)
         self.bottomRight = CLLocationCoordinate2DMake(xf, yf)
     }
     
-    init(topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D) {
+    public init(topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D) {
         self.topLeft = topLeft
         self.bottomRight = bottomRight
     }

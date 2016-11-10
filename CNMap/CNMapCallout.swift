@@ -9,15 +9,26 @@
 import Foundation
 import CoreLocation
 
-final class CNMapCallout {
+open class CNMapCallout {
     
-    weak var coordinator: CNMapViewCoordinator!
     var infoView: CNMapCalloutView?
+    weak var mapView: CNMapView!
+
+    var isUserInteractionEnabled: Bool {
+        get { return infoView?.isUserInteractionEnabled ?? false }
+        set { infoView?.isUserInteractionEnabled = newValue }
+    }
+    
+    func disableUserInteraction() {
+        infoView?.isUserInteractionEnabled = false
+    }
+    
+
     
     func createInfoViewForAnnotation(_ annotation: CNMapAnnotation) {
         infoView?.removeFromSuperview()
         infoView = nil
-        infoView = coordinator.delegate?.createInfoViewForAnnotation(annotation)
+        infoView = mapView.createInfoViewForAnnotation(annotation)
     }
     
     /*
@@ -39,19 +50,15 @@ final class CNMapCallout {
     }
     */
     
-    func showAtAnnotation(_ annotation: CNMapAnnotation, animated: Bool) {
-        guard coordinator != nil else { return }
-        
+    open func showAtAnnotation(_ annotation: CNMapAnnotation, animated: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.createInfoViewForAnnotation(annotation)
-            if let mapView = self?.coordinator.mapView {
-                self?.coordinator.mapView.delegate?.mapView(mapView, setCenterCoordinate: annotation.internalCoordinate)
-            }
-            self?.enableUserInteraction()
+            self?.mapView.setCenterCoordinate(annotation.internalCoordinate)
+            self?.isUserInteractionEnabled = true
         }
     }
     
-    func hide(_ animated: Bool = true) {
+    open func hide(_ animated: Bool = true) {
         if let view = infoView {
             infoView = nil
             UIView.setAnimationsEnabled(animated)
@@ -69,16 +76,8 @@ final class CNMapCallout {
         }
     }
     
-    func enableUserInteraction() {
-        infoView?.enableUserInteraction()
-    }
-    
-    func disableUserInteraction() {
-        infoView?.disableUserInteraction()
-    }
-    
-    init(coordinator: CNMapViewCoordinator) {
-        self.coordinator = coordinator
+    public init(mapView: CNMapView) {
+        self.mapView = mapView
     }
     
 }

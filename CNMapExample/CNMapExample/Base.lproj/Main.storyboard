@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CNMapExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bq6-Vf-MA2">
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SCK-6f-b5h">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <segments>
+                                            <segment title="Apple"/>
+                                            <segment title="Google"/>
+                                            <segment title="Yandex"/>
+                                        </segments>
+                                        <color key="tintColor" red="1" green="0.9239773720156953" blue="0.73933450189167016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="mapProviderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZeR-Pt-KpI"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SCK-6f-b5h" firstAttribute="leading" secondItem="Bq6-Vf-MA2" secondAttribute="leading" constant="8" id="G1L-93-wdN"/>
+                                    <constraint firstAttribute="trailing" secondItem="SCK-6f-b5h" secondAttribute="trailing" constant="8" id="TtR-8I-Hzd"/>
+                                    <constraint firstItem="SCK-6f-b5h" firstAttribute="top" secondItem="Bq6-Vf-MA2" secondAttribute="top" constant="6" id="a6W-MF-hv7"/>
+                                    <constraint firstAttribute="bottom" secondItem="SCK-6f-b5h" secondAttribute="bottom" constant="6" id="mCL-2r-AmL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWj-X6-50b">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bq6-Vf-MA2" firstAttribute="top" secondItem="NWj-X6-50b" secondAttribute="bottom" id="7ae-Sb-OQx"/>
+                            <constraint firstItem="Bq6-Vf-MA2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="LiN-Qw-YQw"/>
+                            <constraint firstItem="NWj-X6-50b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="Ls9-ku-1xV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bq6-Vf-MA2" secondAttribute="trailing" constant="-16" id="PiB-wS-ehK"/>
+                            <constraint firstItem="NWj-X6-50b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="SLN-ix-fW8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Bq6-Vf-MA2" secondAttribute="bottom" id="cN5-qd-RuZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NWj-X6-50b" secondAttribute="trailing" constant="-16" id="g4Q-Fy-3hj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="baseMapView" destination="NWj-X6-50b" id="sG8-BU-dx5"/>
+                        <outlet property="mapProviderSegmentedControl" destination="SCK-6f-b5h" id="5Ed-gk-L59"/>
+                        <outlet property="mapProviderView" destination="Bq6-Vf-MA2" id="Etq-pn-Jet"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

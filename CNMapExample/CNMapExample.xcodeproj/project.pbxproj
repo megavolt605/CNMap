@@ -12,6 +12,9 @@
 		782BA26A1DA926A900926D87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782BA2681DA926A900926D87 /* Main.storyboard */; };
 		782BA26C1DA926A900926D87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 782BA26B1DA926A900926D87 /* Assets.xcassets */; };
 		782BA26F1DA926A900926D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782BA26D1DA926A900926D87 /* LaunchScreen.storyboard */; };
+		789380711DA9835F006A0BBB /* AppleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789380701DA9835F006A0BBB /* AppleMapView.swift */; };
+		789380731DA98432006A0BBB /* ApplePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789380721DA98432006A0BBB /* ApplePinView.swift */; };
+		78A512E61DAFA0F500989B5D /* AppleMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A512E51DAFA0F500989B5D /* AppleMapAnnotation.swift */; };
 		DF0FD7CDE20B4FA03A4DBDA5 /* Pods_CNMapExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF98103E95AEE1604A6CB371 /* Pods_CNMapExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +27,9 @@
 		782BA26B1DA926A900926D87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		782BA26E1DA926A900926D87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		782BA2701DA926A900926D87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		789380701DA9835F006A0BBB /* AppleMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMapView.swift; sourceTree = "<group>"; };
+		789380721DA98432006A0BBB /* ApplePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePinView.swift; sourceTree = "<group>"; };
+		78A512E51DAFA0F500989B5D /* AppleMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMapAnnotation.swift; sourceTree = "<group>"; };
 		CAB4F107E3631A8586492BEA /* Pods-CNMapExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNMapExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNMapExample/Pods-CNMapExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CF98103E95AEE1604A6CB371 /* Pods_CNMapExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CNMapExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +86,9 @@
 			children = (
 				782BA2641DA926A900926D87 /* AppDelegate.swift */,
 				782BA2661DA926A900926D87 /* ViewController.swift */,
+				789380701DA9835F006A0BBB /* AppleMapView.swift */,
+				78A512E51DAFA0F500989B5D /* AppleMapAnnotation.swift */,
+				789380721DA98432006A0BBB /* ApplePinView.swift */,
 				782BA2681DA926A900926D87 /* Main.storyboard */,
 				782BA26B1DA926A900926D87 /* Assets.xcassets */,
 				782BA26D1DA926A900926D87 /* LaunchScreen.storyboard */,
@@ -212,6 +221,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789380711DA9835F006A0BBB /* AppleMapView.swift in Sources */,
+				789380731DA98432006A0BBB /* ApplePinView.swift in Sources */,
+				78A512E61DAFA0F500989B5D /* AppleMapAnnotation.swift in Sources */,
 				782BA2671DA926A900926D87 /* ViewController.swift in Sources */,
 				782BA2651DA926A900926D87 /* AppDelegate.swift in Sources */,
 			);

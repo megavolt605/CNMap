@@ -9,30 +9,52 @@
 import UIKit
 import CNMap
 
-enum CNMapProvider {
-    case apple, yandex, google
+enum MapProvider: Int {
+    case apple//, yandex, google
 }
 
 class ViewController: UIViewController {
     
-    static func createViewWithProvider(_ provider: CNMapProvider, frame: CGRect, ownerViewController: UIViewController) -> CNMapView {
-        switch provider {
-        case .yandex: return RPMapViewYandex(frame: frame, ownerViewController: ownerViewController)
-        case .google: return RPMapViewGoogle(frame: frame, ownerViewController: ownerViewController)
-        case .apple: return RPMapViewApple(frame: frame, ownerViewController: ownerViewController)
-        }
-    }
+    @IBOutlet weak var mapProviderView: UIView!
+    @IBOutlet weak var mapProviderSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var baseMapView: UIView!
+    
+    var provider: MapProvider = .apple
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        mapProviderSegmentedControl.selectedSegmentIndex = provider.rawValue
+        
+        baseMapView.clipsToBounds = true
+        CNMapCoordinator.coordinator.superView = baseMapView
+        CNMapCoordinator.coordinator.delegate = self
+        CNMapCoordinator.coordinator.reloadMap(sender: self)
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func mapProviderChanged(_ sender: AnyObject) {
+        provider = MapProvider(rawValue: mapProviderSegmentedControl.selectedSegmentIndex)!
+        CNMapCoordinator.coordinator.reloadMap(sender: self)
     }
-
 
 }
 
+extension ViewController: CNMapCoordinatorDelegate {
+ 
+    func mapCoordinator(_ coordinator: CNMapCoordinator, needsMapViewInFrame frame: CGRect) -> CNMapView {
+        switch provider {
+        case .apple: return AppleMapView(frame: frame)
+        /*case .yandex: return YandexMapView(frame: frame)
+         case .google: return GoogleMapView(frame: frame)*/
+        }
+    }
+
+    func mapCoordinator(_ coordinator: CNMapCoordinator, regionDidChangeAnimated animated: Bool) {
+        
+    }
+    
+    func mapCoordinator(_ coordinator: CNMapCoordinator, openInfoForAnnotation annotation: CNMapAnnotation) {
+        
+    }
+    
+}
